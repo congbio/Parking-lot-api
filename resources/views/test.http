@@ -1,0 +1,324 @@
+
+
+### login
+POST http://localhost/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "cacongkplpe@gmail.com",
+    "password":12345
+}
+### sign up
+POST http://localhost/api/account/register
+Content-Type: application/json
+
+{
+    "fullName" : "Conggu",
+    "email": "cong1@yopmail.com",
+    "password": 12345678,
+    "password_confirmation":12345678
+}
+### confirm otp create account
+POST http://localhost/api/account/confirm-registration
+Content-Type: application/json
+
+{
+    "otp" :706620,
+    "email": "cong1@yopmail.com"
+}
+
+
+### sent otp to reset account
+POST http://ec2-13-231-114-148.ap-northeast-1.compute.amazonaws.com/api/password/email
+Content-Type: application/json
+
+{
+   "email": "cong1@yopmail.com"
+
+}
+
+### confirm otp to reset account
+POST http://ec2-13-231-114-148.ap-northeast-1.compute.amazonaws.com/api/password/confirm-reset
+Content-Type: application/json
+
+{
+   "email": "cong1@yopmail.com",
+    "otp" : 751323
+    
+}
+
+### change account
+POST http://ec2-13-231-114-148.ap-northeast-1.compute.amazonaws.com/api/password/reset
+Content-Type: application/json
+
+{
+    "email":"cong1@yopmail.com",
+    "password": 123456789,
+    "password_confirmation":123456789
+    
+
+}
+
+### user ------------------------------------
+### get infor of user
+GET http://localhost/api/user/1000000/info
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3NzUyMzQyNn0._3OhelZv-we7dN6s_z0c6aILhmbPA4g99gY6wrf-n_g1W6-0vFd7geF2tY-SzsaBxDaNa_ALE7FKJlvZHVceAw
+
+### get role of user
+GET http://localhost/api/user/1000000/role
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3NzAzODIzMH0.y4IPaN3XVT6eBHfu27buo6mI9tV95wcuB4hap9R4vwVsQnPhuP4C1N6exQiY_RWogUXqJziwuwmvmBXUkHu_BA
+
+### update profile
+put http://localhost/api/user/update/1000000
+Accept: multipart/form-data
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMTAsImV4cCI6MTY3NjU1MjUxMX0.auGyT7Z68wsiKuwC842oE-U3ZLy_F5nhQ2DuoXH4lv67Buje6fUaCBhT3HythsDJpnVQEZBTr-RVmsAk9Pge1w
+{
+    "fullName":"dkfjkdlfj",
+    "avatar":
+}
+
+
+
+
+
+
+
+### Parking lot=================================
+
+
+### get all parking lot
+
+GET http://localhost/api/parking-lot
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3NjcyNzUwM30.DBsaiLINNbTsKhWw9erY-TfZF6SYzs0nk3sLb5iqiFLrqNE3vFAOsx-i7XFC4QQBN4_yQtd7Ac944CZbzF18sg
+
+### get infor of parking lot
+
+
+GET http://localhost/api/parking-lot/1000000/info
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODE1MDI3MX0.N-BMLe3QTKOcudqbz__yt3U9s5hSMPxaWYLA2bhybOljHbyLJRjwIHw0pRp-J-dC0eASUto7B4R6k4I3arlfQA
+
+
+
+
+### location near you 
+
+GET http://localhost/api/parking-lot/location
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODE1MDI3MX0.N-BMLe3QTKOcudqbz__yt3U9s5hSMPxaWYLA2bhybOljHbyLJRjwIHw0pRp-J-dC0eASUto7B4R6k4I3arlfQA
+
+
+{
+    "latitude":16.060832,
+    "longitude":108.241491
+}
+
+### get comment of parking lot
+
+GET http://localhost/api/parking-lot/1000000/info/comment
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3NzA3Mzc5Mn0.zPs_C2kMFzaZ1xmm-nmVG-uCit7Zc9rMLw-4DV_Ku6EOJubP72efshgOmJQaNY0imIuUAr_Pg9xVtJmpEcmKqg
+
+### get price of parking lot
+
+GET http://localhost/api/parking-lot/1000000/info/price
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3NzA3Mzc5Mn0.zPs_C2kMFzaZ1xmm-nmVG-uCit7Zc9rMLw-4DV_Ku6EOJubP72efshgOmJQaNY0imIuUAr_Pg9xVtJmpEcmKqg
+
+
+
+
+### block===========================================
+ 
+ 
+### get info detail slot of block cach 2
+#input la id cua parkinglot start_datetime end_datetime
+GET http://localhost/api/parking-lot/1000002/slots?start_datetime=2023-02-23 14:30:00&end_datetime=2023-02-24 14:30:00
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODQ1MjIzMn0.8PvmLI6jp6wjjggOB9XhXiLECQgjkYJZk8--0UtOhAwC6FxrS1BWmW-hWI-dbMW3hi8mFf0IAq6X8_YT642K5A
+
+
+### get detail booking----------------------------------------------------
+GET http://localhost/api/booking/slots
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODE1MDI3MX0.N-BMLe3QTKOcudqbz__yt3U9s5hSMPxaWYLA2bhybOljHbyLJRjwIHw0pRp-J-dC0eASUto7B4R6k4I3arlfQA
+
+
+{
+    "ids":[100000051,100000052],
+   "start_datetime":"2023-02-27 14:50:00",
+    "end_datetime":"2023-03-23 14:50:00"
+}
+### booking now--
+POST  http://localhost/api/booking
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODQ1MjIzMn0.8PvmLI6jp6wjjggOB9XhXiLECQgjkYJZk8--0UtOhAwC6FxrS1BWmW-hWI-dbMW3hi8mFf0IAq6X8_YT642K5A
+
+{
+    "slot_ids":[100000059],
+    "user_id":1000000,
+    "start_datetime":"2023-01-27 14:50:00",
+    "end_datetime":"2023-02-01 14:50:00",
+    "licensePlate":["congkdfkd","fdkjfdkfjk","dkfdkfjkd"]
+}
+### get qrcode
+GET http://localhost/api/booking/show
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3Nzg0OTMwMH0.9TB50I8ZFSm6dLnXgZoSJJM1GCLPxbtw-0NmwZNhzhB83tXni4FF0juKcNMrWcaof-nT9ObEFOl7hhAWD34OPQ
+
+{
+    "userId":1000000,
+    "startDateTime":"2023-02-27 14:30:00"
+    
+}
+
+# owwner quanr ly///////////////////////////////
+### create parking lot
+POST  http://localhost/api/parking-lot/create
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3NzU0ODU1NX0.lHCM0VBtXbkhQ9sEJdTaX-TSx9wEAIAO98G4hNBSbtefOBZPM7pUQ1hF9Am2_my_UEKDSTcoLU0exZZ9FYiBWw
+# test ben post man cos truongwf anh
+
+{
+"userId":"1000001",
+"image"
+"openTime":"20:08",
+"endTime":"20:09",
+"nameParkingLot":"cong aaaaaaaaaa",
+"address_latitude":"16.060832",
+"address_longitude":"16.060832",
+"address":"fdfdf",
+"desc":"dfdf"
+}
+
+### create blocks with slot
+POST  http://localhost/api/parking-lot/block/create
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3Nzg0OTMwMH0.9TB50I8ZFSm6dLnXgZoSJJM1GCLPxbtw-0NmwZNhzhB83tXni4FF0juKcNMrWcaof-nT9ObEFOl7hhAWD34OPQ
+
+{
+ "parkingLotId":1000000,
+ "nameBlock":"Khu B",
+ "carType":"16-34SLOT",
+ "desc":"moo ta cua block",
+ "price":40000,
+ "numberOfSlot":50
+}
+
+### getall block parking lot id
+get  http://localhost/api/parking-lot/1000000/blocks
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3Nzg0OTMwMH0.9TB50I8ZFSm6dLnXgZoSJJM1GCLPxbtw-0NmwZNhzhB83tXni4FF0juKcNMrWcaof-nT9ObEFOl7hhAWD34OPQ
+
+
+### get detail block
+get  http://localhost/api/parking-lot/block/1000000
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3Nzg0OTMwMH0.9TB50I8ZFSm6dLnXgZoSJJM1GCLPxbtw-0NmwZNhzhB83tXni4FF0juKcNMrWcaof-nT9ObEFOl7hhAWD34OPQ
+
+### update block
+PUT  http://localhost/api/parking-lot/block/1000000/update
+Content-Type: application/json;
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3Nzg0OTMwMH0.9TB50I8ZFSm6dLnXgZoSJJM1GCLPxbtw-0NmwZNhzhB83tXni4FF0juKcNMrWcaof-nT9ObEFOl7hhAWD34OPQ
+
+{
+ "nameBlock":"Khu a",
+ "carType":"16-34SLOT",
+ "desc":"moo ta cua block",
+ "price":40000
+}
+### delete block
+DELETE   http://localhost/api/parking-lot/block/1000041/delete
+Content-Type: application/json;
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3Nzg0OTMwMH0.9TB50I8ZFSm6dLnXgZoSJJM1GCLPxbtw-0NmwZNhzhB83tXni4FF0juKcNMrWcaof-nT9ObEFOl7hhAWD34OPQ
+
+
+
+
+### history---------------------------------------------
+GET http://localhost/api/booking/1000000/history
+Content-Type: application/json;
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODQ1MjIzMn0.8PvmLI6jp6wjjggOB9XhXiLECQgjkYJZk8--0UtOhAwC6FxrS1BWmW-hWI-dbMW3hi8mFf0IAq6X8_YT642K5A
+
+
+
+
+
+# Dashboard/////////////////////////////
+
+# Screen 1
+### get all parkinglot by user management
+GET http://localhost/api/dashboard/parkingLots/1000000
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODQ1MjIzMn0.8PvmLI6jp6wjjggOB9XhXiLECQgjkYJZk8--0UtOhAwC6FxrS1BWmW-hWI-dbMW3hi8mFf0IAq6X8_YT642K5A
+
+
+
+#screen revenue
+### revenue by day, month, year
+GET http://localhost/api/dashboard/1000000/revenue/day
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODQ1MjIzMn0.8PvmLI6jp6wjjggOB9XhXiLECQgjkYJZk8--0UtOhAwC6FxrS1BWmW-hWI-dbMW3hi8mFf0IAq6X8_YT642K5A
+
+###
+post  http://localhost/api/parking-lot/block/slots/delete
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODk4MTAyNX0.ZeSClJjYkt1QugXa4MPvacJR7mhnXWgSzsgCJgPB6N_yUyakh986Aw1h9A4YQgy6Oo9oR5_Da-bJclSc8AMucg
+
+{
+    "ids":[100000007,100000005,100000006]
+ 
+}
+
+###
+DELETE http://localhost/api/parking-lot/delete/1000028
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODk4MTAyNX0.ZeSClJjYkt1QugXa4MPvacJR7mhnXWgSzsgCJgPB6N_yUyakh986Aw1h9A4YQgy6Oo9oR5_Da-bJclSc8AMucg
+
+ 
+
+###
+PATCH http://localhost/api/booking/update
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODk4MTAyNX0.ZeSClJjYkt1QugXa4MPvacJR7mhnXWgSzsgCJgPB6N_yUyakh986Aw1h9A4YQgy6Oo9oR5_Da-bJclSc8AMucg
+
+{
+    "bookingIds":[1000000,1000001]
+}
+
+
+###
+GET http://localhost/api/booking/check-date
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODk4MTAyNX0.ZeSClJjYkt1QugXa4MPvacJR7mhnXWgSzsgCJgPB6N_yUyakh986Aw1h9A4YQgy6Oo9oR5_Da-bJclSc8AMucg
+
+ 
+
+
+### eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODg0NDMxMn0.XEkqYbMllPmFFQGy9yNFqExJNBh5zbnvGwH4KlAtSdgr3gFis_mlpwhp4g12upgQgHORNZPdnSQHpK-mqHrM_w
+#  ?===========Chat============
+ 
+# ### getcontent chat
+# GET http://ec2-18-181-252-131.ap-northeast-1.compute.amazonaws.com/api/chat/history/1000000/1000001
+# Accept: application/json
+# Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODE1MDI3MX0.N-BMLe3QTKOcudqbz__yt3U9s5hSMPxaWYLA2bhybOljHbyLJRjwIHw0pRp-J-dC0eASUto7B4R6k4I3arlfQA
+
+# ### getcontent chat
+# POST http://ec2-18-181-252-131.ap-northeast-1.compute.amazonaws.com/api/chat/send
+# Content-Type: application/json
+# Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjEwMDAwMDAsImV4cCI6MTY3ODE1MDI3MX0.N-BMLe3QTKOcudqbz__yt3U9s5hSMPxaWYLA2bhybOljHbyLJRjwIHw0pRp-J-dC0eASUto7B4R6k4I3arlfQA
+
+# {
+#     "senderId":1000000,
+#     "receiverId":1000001,
+#     "content":"ongdkfjdkf"
+# }
+
+
+revenue, 
+get notificaotn, get comment (iduser,idparkiglot),
+
+complete ten bai do

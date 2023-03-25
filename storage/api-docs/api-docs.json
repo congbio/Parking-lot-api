@@ -1,0 +1,1991 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "LARAVEL Rest API DOCUMENTATION",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/password/sendCode": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "send code to reset account",
+                "operationId": "sendCode",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/password/confirm-reset": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "send code to reset account",
+                "operationId": "checkCode",
+                "parameters": [
+                    {
+                        "name": "otp",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/password/reset": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "change password",
+                "operationId": "resetPassword",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/account/register": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Register",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "cong"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "cong@yopmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "12345678"
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "12345678"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/account/confirm-registration": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "confirm otp to create accont",
+                "operationId": "confirmRegistration",
+                "parameters": [
+                    {
+                        "name": "otp",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/dashboard/parkingLots/{parkingLotId}/{period}": {
+            "get": {
+                "tags": [
+                    "DashBoard"
+                ],
+                "summary": "get statics of one parkingLot with a Id",
+                "operationId": "parkingLotBookingStats",
+                "parameters": [
+                    {
+                        "name": "parkingLotId",
+                        "in": "path",
+                        "description": "id parkingLot management",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "period day or week or month or year",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "day"
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/parkingLots/{userId}": {
+            "get": {
+                "tags": [
+                    "DashBoard"
+                ],
+                "summary": "get all parkinglot by user management",
+                "operationId": "getParkingUserManage",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "id user management",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/{userId}/revenue/{period}": {
+            "get": {
+                "tags": [
+                    "DashBoard"
+                ],
+                "summary": "Statistics parking lot block, revenue,userBooking by number",
+                "operationId": "getRevenueDetails",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "id user manage parking lto lot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "period day or week or month or year",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "day"
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/{id}/slots": {
+            "get": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "get all slot in this block with detail status",
+                "operationId": "getSlotStatusByBookingDateTime2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the parking lot to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "start_datetime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-03-01 14:30:00"
+                    },
+                    {
+                        "name": "end_datetime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-04-01 14:30:00"
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking/slots": {
+            "get": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "show detail booking",
+                "operationId": "getSlotsByIdWithBlockName",
+                "parameters": [
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "description": "An array of integers.",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        "example": "[100000000,100000001]"
+                    },
+                    {
+                        "name": "start_datetime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-03-01 14:30:00"
+                    },
+                    {
+                        "name": "end_datetime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-04-01 14:30:00"
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking": {
+            "post": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "booking now",
+                "operationId": "bookParkingLot",
+                "parameters": [
+                    {
+                        "name": "slot_ids[]",
+                        "in": "query",
+                        "description": "Array of booking IDs",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "start_datetime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-01-27 14:50:00"
+                    },
+                    {
+                        "name": "end_datetime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2023-02-01 14:50:00"
+                    },
+                    {
+                        "name": "licensePlate[]",
+                        "in": "query",
+                        "description": "Array of booking IDs",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking/{userId}/history": {
+            "get": {
+                "tags": [
+                    "History"
+                ],
+                "summary": "get history booking of user",
+                "operationId": "historyBookingSummary",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "id user booking",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking/history/details": {
+            "get": {
+                "tags": [
+                    "History"
+                ],
+                "summary": "get history detail booking of user",
+                "operationId": "historyBookingDetail",
+                "parameters": [
+                    {
+                        "name": "bookingIds[]",
+                        "in": "query",
+                        "description": "Array of booking IDs",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking/show": {
+            "get": {
+                "tags": [
+                    "QrCode"
+                ],
+                "summary": "Scan QRcode to get detail booking",
+                "operationId": "getDetailQRcode",
+                "parameters": [
+                    {
+                        "name": "bookingIds[]",
+                        "in": "query",
+                        "description": "Array of booking IDs",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking/update": {
+            "patch": {
+                "tags": [
+                    "QrCode"
+                ],
+                "summary": "Qr Code to confirm complete finish booking",
+                "operationId": "completeBooking",
+                "parameters": [
+                    {
+                        "name": "bookingIds[]",
+                        "in": "query",
+                        "description": "Array of booking IDs",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/booking/cancel": {
+            "put": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "cancel booking",
+                "operationId": "cancelBooking",
+                "parameters": [
+                    {
+                        "name": "bookingIds[]",
+                        "in": "query",
+                        "description": "Array of booking IDs",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/comments": {
+            "post": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "create comment",
+                "operationId": "storeComment",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "parkingId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "good"
+                    },
+                    {
+                        "name": "ranting",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 2
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/comments/{id}/update": {
+            "patch": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Update a comment.",
+                "operationId": "3cf5275ea21ad9d6e0344a7482fa9f0a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the comment to update.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "New content of the comment.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ranting",
+                        "in": "query",
+                        "description": "New ranting of the comment (1-5).",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 5,
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/comments/{idUser}/{idParkingLot}": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "get comment with idUser and id parking lot.",
+                "operationId": "93c71c5d03dbbc34f76af22f5ad2bbbf",
+                "parameters": [
+                    {
+                        "name": "idUser",
+                        "in": "path",
+                        "description": "id user.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "idParkingLot",
+                        "in": "query",
+                        "description": "id parking lot.",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/comments/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Delete Comment",
+                "description": "Update the user's profile.",
+                "operationId": "deleteComment",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of comment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/notifications/{userId}": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "get all notification with id user",
+                "operationId": "97c75d9b4d836677790296568884d93e",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "id user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/notifications/{id}/read": {
+            "patch": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "update read",
+                "operationId": "markAsRead",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of comment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "comment updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/{idParking}/blocks": {
+            "get": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "get all block with id parking lot",
+                "operationId": "getAllBlock",
+                "parameters": [
+                    {
+                        "name": "idParking",
+                        "in": "path",
+                        "description": "ID of parking lot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/create": {
+            "post": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "create block ,slot",
+                "operationId": "createBlockSlot",
+                "parameters": [
+                    {
+                        "name": "parkingLotId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1000000"
+                    },
+                    {
+                        "name": "nameBlock",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Khu a"
+                    },
+                    {
+                        "name": "carType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "4-16SLOT"
+                    },
+                    {
+                        "name": "desc",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "an toan cao"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 14000
+                    },
+                    {
+                        "name": "numberOfSlot",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 50
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/{id}": {
+            "get": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "show detail info of block",
+                "operationId": "showDetailBlock",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of parking lot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/{id}/update": {
+            "put": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "Update block",
+                "description": "Update the user's profile.",
+                "operationId": "updateBlock",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of block parking lot",
+                        "required": true,
+                        "example": 1000000
+                    }
+                ],
+                "requestBody": {
+                    "description": "block object that needs to be updated.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nameBlock": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 2000000
+                                    },
+                                    "desc": {
+                                        "type": "string",
+                                        "example": "16-34SLOT"
+                                    },
+                                    "carType": {
+                                        "type": "string",
+                                        "example": "16-34SLOT"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "Block"
+                ],
+                "summary": "Delete block",
+                "description": "Update the user's profile.",
+                "operationId": "deleteBlock",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of block parking lot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1000041
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/{blockId}/slots": {
+            "get": {
+                "tags": [
+                    "Slot"
+                ],
+                "summary": "get all slot with id block",
+                "operationId": "getAllSlot",
+                "parameters": [
+                    {
+                        "name": "blockId",
+                        "in": "path",
+                        "description": "ID of parking lot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/slots/create": {
+            "post": {
+                "tags": [
+                    "Slot"
+                ],
+                "summary": "create slot ",
+                "operationId": "createSlot",
+                "parameters": [
+                    {
+                        "name": "slotName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "E3"
+                    },
+                    {
+                        "name": "blockId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/slots/{slotId}": {
+            "get": {
+                "tags": [
+                    "Slot"
+                ],
+                "summary": "get detail slot with id slot",
+                "operationId": "getDetailSlot",
+                "parameters": [
+                    {
+                        "name": "slotId",
+                        "in": "path",
+                        "description": "ID of slot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 100000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/block/slots/update/{slotId}": {
+            "put": {
+                "tags": [
+                    "Slot"
+                ],
+                "summary": "update slot",
+                "operationId": "updateSlot",
+                "parameters": [
+                    {
+                        "name": "slotId",
+                        "in": "path",
+                        "description": "ID of slot",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 100000000
+                    },
+                    {
+                        "name": "slotName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "E3"
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot": {
+            "get": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "admin get all parking lot",
+                "operationId": "index",
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/{idParking}": {
+            "get": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "detail parking lot with id",
+                "operationId": "showParkingLot",
+                "parameters": [
+                    {
+                        "name": "idParking",
+                        "in": "path",
+                        "description": "ID of the parking lot to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/{id}/info/{userId}": {
+            "get": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "detail parking lot with id",
+                "operationId": "getInfoParkingLot",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the parking lot to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "IDuser to see status wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/{id}/info/comment": {
+            "get": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "detail comment of parking lot",
+                "operationId": "showCommentOfParking",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the parking lot to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/location": {
+            "get": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "show location near user ",
+                "operationId": "showParkingLotNearLocation",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": 16.060832
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": 108.24149
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/create": {
+            "post": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "Create a new parking lot",
+                "description": "Create a new parking lot with the specified details",
+                "operationId": "createParkingLot",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "userId": {
+                                        "type": "integer",
+                                        "example": 1000000
+                                    },
+                                    "images[]": {
+                                        "description": "Array of images",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "file"
+                                        }
+                                    },
+                                    "openTime": {
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "20:08"
+                                    },
+                                    "endTime": {
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "21:08"
+                                    },
+                                    "nameParkingLot": {
+                                        "type": "string",
+                                        "example": "Parking Lot Cong"
+                                    },
+                                    "address_latitude": {
+                                        "type": "string",
+                                        "example": "16.060832"
+                                    },
+                                    "address_longitude": {
+                                        "type": "string",
+                                        "example": "108.241491"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "101B Le Huu Tra"
+                                    },
+                                    "desc": {
+                                        "type": "string",
+                                        "example": "gia ra dat an ninh coa"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Parking lot created successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/update/{idParkingLot}": {
+            "post": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "update  parking lot",
+                "description": "update parking lot with the specified details",
+                "operationId": "updateParkingLot",
+                "parameters": [
+                    {
+                        "name": "idParkingLot",
+                        "in": "path",
+                        "description": "ID of the parking lot to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000002
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "images[]": {
+                                        "description": "Array of images",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "file"
+                                        }
+                                    },
+                                    "imageUpdates[]": {
+                                        "description": "Array of images",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "openTime": {
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "20:08"
+                                    },
+                                    "endTime": {
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "21:08"
+                                    },
+                                    "nameParkingLot": {
+                                        "type": "string",
+                                        "example": "Parking Lot Cong"
+                                    },
+                                    "address_latitude": {
+                                        "type": "string",
+                                        "example": "16.060832"
+                                    },
+                                    "address_longitude": {
+                                        "type": "string",
+                                        "example": "108.241491"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "101B Le Huu Tra"
+                                    },
+                                    "desc": {
+                                        "type": "string",
+                                        "example": "gia ra dat an ninh coa"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "PUT"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Parking lot created successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/parking-lot/delete/{idParkingLot}": {
+            "delete": {
+                "tags": [
+                    "Parking Lot"
+                ],
+                "summary": "Delete parking lot",
+                "operationId": "deleteParkingLot",
+                "parameters": [
+                    {
+                        "name": "idParkingLot",
+                        "in": "path",
+                        "description": "ID of the parking lot to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/user/{userId}/wishlist": {
+            "get": {
+                "tags": [
+                    "Wishlist"
+                ],
+                "summary": "get all parkingLot have wishlist",
+                "operationId": "getWishlist",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "id user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/user/wishlist/add": {
+            "post": {
+                "tags": [
+                    "Wishlist"
+                ],
+                "summary": "add wishlist or Delete wishlist",
+                "operationId": "addWishList",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    },
+                    {
+                        "name": "parkingLotId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1000000
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/owner/create/{id}": {
+            "post": {
+                "tags": [
+                    "Space owner"
+                ],
+                "summary": "become owner parking lot",
+                "description": "Update the user's profile.",
+                "operationId": "becomeSpaceOwner",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "integer"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "PUT"
+                                    },
+                                    "businessScale": {
+                                        "type": "string",
+                                        "example": "local"
+                                    },
+                                    "imageCardIdBef": {
+                                        "type": "file"
+                                    },
+                                    "imageCardIdAft": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/user/": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "get all user",
+                "operationId": "getAllUser",
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/user/{id}/role": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "check role user",
+                "operationId": "getRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/user/update/{id}": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user profile",
+                "description": "Update the user's profile.",
+                "operationId": "updateProfile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "fullName": {
+                                        "type": "string"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "PUT"
+                                    },
+                                    "avatar": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "apiKey",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "name": "Authorization",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
